@@ -1,0 +1,4 @@
+Use relativeLayout instead of constraintLayout
+
+    case: relativeLayout isnt working
+        if you can see the design in the designview then 
