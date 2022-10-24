@@ -10,6 +10,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.*
 import androidx.core.content.FileProvider
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.parse.*
 import java.io.File
 
@@ -32,8 +34,8 @@ class MainActivity : AppCompatActivity() {
             val user = ParseUser.getCurrentUser()
             if(photoFile != null){
                 submitPost(description,user, photoFile!!)
+                Toast.makeText(this, "Successfuly submitted post", Toast.LENGTH_SHORT).show()
             } else {
-
                 Toast.makeText(this, "You must take a picture.", Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "No picture taken")
             }
@@ -42,6 +44,28 @@ class MainActivity : AppCompatActivity() {
             //Launch camera to let user take picture
             onLaunchCamera()
         }
+
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener{
+            item->
+            when(item.itemId){
+                R.id.action_home->{
+                    //TODO: Navigate to the home screen
+                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                }
+                R.id.action_compose->{
+                    //TODO: Navigate to the compose screen
+                    Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
+                }
+                R.id.action_profile->{
+                    //TODO: Navigate to the profile screen
+                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            true
+        }
+
         queryPosts()
 
     }
@@ -149,3 +173,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
